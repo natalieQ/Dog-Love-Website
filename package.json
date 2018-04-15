@@ -1,0 +1,27 @@
+{
+  "name": "doglove",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natalieQ/Dog-Love-Website.git"
+  },
+  "author": "Naili Qi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/natalieQ/Dog-Love-Website/issues"
+  },
+  "homepage": "https://github.com/natalieQ/Dog-Love-Website#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.14"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.7.4"
+  }
+}
