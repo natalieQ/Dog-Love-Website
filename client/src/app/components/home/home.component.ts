@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   message;
   matches;
   findMatch = false;
+  noMatch = false;
+  length;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,6 +48,8 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     console.log('form submitted');
+    this.findMatch = false;
+    this.noMatch = false;
 
     //create dog match 
     const dog = {
@@ -58,13 +62,20 @@ export class HomeComponent implements OnInit {
     //send to backend through dog services
     this.dogService.newMatch(dog).subscribe(data => {
       if (!data.success) {
-        this.messageClass = 'alert alert-danger'; 
-        this.message = data.message; 
+        if(data.message != "No matche found"){
+          this.messageClass = 'alert alert-danger'; 
+          this.message = data.message; 
+        } else {
+          this.noMatch = true;
+        }
       } else {
         this.findMatch = true;
         this.messageClass = 'alert alert-success'; 
         this.message = data.message; 
         this.matches = data.matches;
+        this.length = this.matches.length;
+        console.log(data.matches);
+
       }
 
     });
