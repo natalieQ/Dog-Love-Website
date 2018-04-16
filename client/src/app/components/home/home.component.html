@@ -1,0 +1,74 @@
+<div class="jumbotron text-center">
+  <h1>Dog Love</h1>
+  <p class="lead">Find your prrrrrrfect match</p>
+
+  <br />
+  <br />
+
+  <!-- message -->
+  <div class="show-hide-message" *ngIf="message" >
+    <div [ngClass]="messageClass">
+      {{ message }}
+    </div>
+  </div>
+
+  <!-- form -->
+  <form [formGroup]="form" name="DogForm" (submit)="onSubmit()" >
+    <!-- Gender Input -->
+    <div class="form-group" class="form-inline" >
+      <label for="gender_user">I am a </label>
+      <select class="custom-select d-block w-30" name="gender_user" class="form-control" formControlName="gender_user" required>
+          <option value="Female">Female</option> 
+          <option value="Male">Male</option> 
+      </select>
+      <label for="gender_match"> dog looking for  </label>
+      <select class="custom-select d-block w-30" name="gender_match" class="form-control" formControlName="gender_match" required>
+          <option value="Female">Female</option> 
+          <option value="Male">Male</option> 
+      </select>
+      <label for="gender_match"> dog.</label>
+    </div>
+
+    <!-- Personality Input -->
+    <div class="form-group" class="form-inline" >
+      <label for="personality">I am looking for a </label>
+      <select class="custom-select d-block w-30" name="personality" class="form-control" formControlName="personality" required>
+          <option value="lazy">lazy</option> 
+          <option value="active">active</option>
+          <option value="destructive">destructive</option> 
+          <option value="psychotic">psychotic</option> 
+      </select>
+      <label for="personality"> personality.</label>
+    </div>
+
+    <!-- plush toy Input -->
+    <div class="form-group" class="form-inline" >
+      <label for="toy">I </label>
+      <select class="custom-select d-block w-30" name="toy" class="form-control" formControlName="toy" required>
+          <option value="like">like</option> 
+          <option value="dislike">dislike</option>
+      </select>
+      <label for="toy"> plush toy.</label>
+    </div>
+
+    <!-- cat Input -->
+    <div class="form-group" class="form-inline" >
+      <label for="cat">I </label>
+      <select class="custom-select d-block w-30" name="cat" class="form-control" formControlName="cat" required>
+          <option value="like">like</option> 
+          <option value="hate">hate</option>
+      </select>
+      <label for="cat"> cat.</label>
+    </div>
+    
+    <br />
+    <br />
+    <!-- Submit Button -->
+    <button [disabled]="!form.valid" type="submit" name="button" class="btn btn-success">WOOF, Now!!!</button>
+
+  </form>
+
+  <!-- <div>
+    <a routerLink="/recipe" class="btn btn-success">WOOF, Now!!!</a>
+  </div> -->
+</div>
