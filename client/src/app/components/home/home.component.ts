@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DogService } from '../../services/dog.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +13,13 @@ export class HomeComponent implements OnInit {
   form: FormGroup;
   messageClass;
   message;
+  matches;
+  findMatch = false;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private dogService: DogService,
+    private router: Router
   ) { 
     this.createNewForm();
   }
@@ -38,19 +44,31 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  // onSubmit() {
-  //   console.log('form submitted');
+  onSubmit() {
+    console.log('form submitted');
 
-  //   //create dog match 
-  //   const recipe = {
-  //     name: this.form.get('name').value,
-  //     description: this.form.get('description').value,
-  //     imagePath: this.form.get('imagePath').value,
-  //     origin: this.form.get('origin').value,
-  //     createdBy: this.username
-  //   }
+    //create dog match 
+    const dog = {
+      gender: this.form.get('gender_match').value,
+      personality: this.form.get('personality').value,
+      likesToy: this.form.get('toy').value,
+      likesCat: this.form.get('cat').value,
+    }
 
-  // }
+    //send to backend through dog services
+    this.dogService.newMatch(dog).subscribe(data => {
+      if (!data.success) {
+        this.messageClass = 'alert alert-danger'; 
+        this.message = data.message; 
+      } else {
+        this.findMatch = true;
+        this.messageClass = 'alert alert-success'; 
+        this.message = data.message; 
+        this.matches = data.matches;
+      }
+
+    });
+  }
 
   ngOnInit() {
   }

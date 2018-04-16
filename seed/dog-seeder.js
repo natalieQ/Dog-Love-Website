@@ -177,7 +177,7 @@ var dogs = [
 
 var done = 0;
 for(var i=0; i<dogs.length; i++){
-    dog[i].save(function(err,res){
+    dogs[i].save(function(err,res){
         if(err){
             console.log(err);
         }

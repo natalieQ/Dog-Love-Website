@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
+import { DogService } from './services/dog.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -23,7 +24,7 @@ import { HomeComponent } from './components/home/home.component';
     AppRoutingModule,
     FlashMessagesModule
   ],
-  providers: [FlashMessagesService],
+  providers: [FlashMessagesService,DogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
