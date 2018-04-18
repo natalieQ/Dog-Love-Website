@@ -85,7 +85,11 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item" *ngFor="let j of matches; let k = index" [ngClass]="k == 0 ? 'item active' : 'item'">
-                <img src={{matches[k].imgPath}} alt="Event Image">
+                <a [routerLink]="['/dog-profile/', matches[k]._id]" ><img src={{matches[k].imgPath}} alt="Event Image"></a>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Name: {{ matches[k].name }}</h5>
+                    <p>My owner is: {{ matches[k].owner }}</p>
+                </div>
             </div>
         </div>
 

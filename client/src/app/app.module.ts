@@ -9,12 +9,16 @@ import { DogService } from './services/dog.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { DogProfileComponent } from './components/dog-profile/dog-profile.component';
+import { DogLoveComponent } from './components/dog-love/dog-love.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    DogProfileComponent,
+    DogLoveComponent
   ],
   imports: [
     BrowserModule,

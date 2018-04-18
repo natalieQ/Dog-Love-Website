@@ -29,5 +29,10 @@ export class DogService {
     return this.http.post(this.domain + 'dogs/newMatch', dog).map(res => res.json());
   }
 
+  //receive dog by id
+  getSinlgeDog(id){
+    return this.http.get(this.domain + 'dogs/singleDog/' + id).map(res => res.json());
+  }
+
 
 }

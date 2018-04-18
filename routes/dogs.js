@@ -38,6 +38,20 @@ module.exports = ( router ) => {
         }
 
     });
+
+    router.get('/singleDog/:id', (req,res) => {
+        if (!req.params.id) {
+            res.json({ success: false, message: 'No dog ID was provided' })
+        } else {
+            Dog.findOne({ _id: req.params.id }, (err, dog) =>{
+                if(err) {
+                    res.json({ success: false, message: 'Dog not found' });
+                } else {
+                    res.json({ success: true, dog: dog });
+                }
+            });
+        }
+    });
     
     return router;
 };
